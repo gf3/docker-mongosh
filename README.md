@@ -10,30 +10,39 @@ A docker image for the [MongoDB Shell](https://github.com/mongodb-js/mongosh).
 
 ## Using
 
-### 1. Build
+Pull the docker image.
 
 ```sh
-docker build -t mongosh:latest .
+docker pull gianni/mongosh:latest
 ```
 
-### 2. Alias
+Alias it in your shell.
 
-**bash**
+Bash:
 
 ```sh
 alias mongosh='docker run -it --rm --network host -v $(pwd):/root mongosh:latest'
 ```
 
-**fish**
+Fish:
 
 ```fish
 alias mongosh 'docker run -it --rm --network host -v (pwd):/root mongosh:latest'
 ```
 
-### 3. Run
+And finally, run it as you typically would.
 
 ```sh
 mongosh "mongodb://mongo-host:27017/database"
 ...
 .load ./myFile.js
+```
+
+## Building
+
+```sh
+git clone git@github.com:gf3/docker-mongosh.git
+cd docker-mongosh
+docker build -t mongosh:latest .
+docker run -it --rm mongosh:latest
 ```
